@@ -248,7 +248,16 @@ switch (input){
 console.log("Do You Want to Sort the Contacts:  \n1. YES \n2. NO")
 let inputSort = parseInt(prompt("Enter your choice:  "))
 if(inputSort == 1){
-    addressBookArray.sort();
-    for(let i = 0; i < addressBookArray.length; i++)
-        console.log(addressBookArray[i].toString())
+    addressBookArray.sort().forEach(con => console.log(con.toString()));
 }
+
+// UC12: Sort the array b/o City, State or Zip
+console.log("Sort Contacts based on \n1. City \n2. State \n3. Zip \n4. None")
+let inputSort1 = parseInt(prompt("Enter your choice:  "))
+if(inputSort1 == 1)
+    console.log(addressBookArray.sort(function(con1, con2) { return con1.city.localeCompare(con2.city)}))
+if(inputSort1 == 2)
+    console.log(addressBookArray.sort(function(con1, con2) { return con1.state.localeCompare(con2.state)}))
+if(inputSort1 == 3)
+    console.log(addressBookArray.sort(function(con1, con2) { return parseInt(con1.zip) - parseInt(con2.zip)}))
+    
