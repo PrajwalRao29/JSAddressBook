@@ -83,8 +83,8 @@ class Contact{
 let contact1 = new Contact("Abhishek", "Das", "DLFF", "GGNN", "HARYANA", "122002", "91 9953503212", "ard@gmail.com")
 let contact2 = new Contact("Praveen", "Satya", "DLFF", "ABCD", "EFGH", "580004", "91 7593797593", "praveen@gmail.com")
 let contact3 = new Contact("Sumit", "Sharma", "DLFF", "ABCD", "EFGH", "826 004", "91 4929280202", "sumit@gmail.com")
-let contact4 = new Contact("Aditya", "Viren", "DLFF", "ABCD", "EFGH", "122 004", "91 4929280202", "aditya@gmail.com")
-let contact5 = new Contact("Abhishek", "Das", "DLFF", "ABCD", "EFGH", "826 004", "91 4929280202", "sumit@gmail.com")
+let contact4 = new Contact("Aditya", "Viren", "DLFF", "ABCD", "JKLM", "122 004", "91 4929280202", "aditya@gmail.com")
+let contact5 = new Contact("Abhishek", "Das", "DLFF", "ABCD", "JKLM", "826 004", "91 4929280202", "sumit@gmail.com")
 
 // UC7: No Duplicate Entry
 var addressBookArray = new Array()
@@ -185,3 +185,31 @@ function count(counter){
     return counter + 1;
 }
 console.log("Total Number of Contacts: " + addressBookArray.reduce(count, 0))
+
+// UC8: Search Person by City State
+function searchByCityState(place, choice){
+    let contacts = new Array();
+    if(choice == 1){
+        contacts = addressBookArray.filter(con => con.city === place)
+    }
+    if(choice == 2){
+        contacts = addressBookArray.filter(con => con.state === place)
+    }
+    return contacts;
+}
+console.log("1. Search By City \n2. Search By State")
+let input = prompt("Enter your choice:  ")
+input = parseInt(input)
+let searchedContacts;
+switch (input){
+    case 1:
+        let city = prompt("Enter the city name:  ")
+        searchedContacts = searchByCityState(city, 1)
+        console.log("Contacts Found in " + city + " are:  " + searchedContacts.reduce(count, 0))
+        break
+    case 2:
+        let state = prompt("Enter the state name:  ")
+        searchedContacts = searchByCityState(state, 2)
+        console.log("Contacts Found in " + state + " are:  " + searchedContacts.reduce(count,0))
+        break
+}
