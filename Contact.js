@@ -203,7 +203,7 @@ function searchByCityState(fname, lname, place, choice){
     return contacts;
 }
 console.log("1. Search Particular Person By City \n2. Search Particular Person By State \n3. Search By City \n4. Search By State" +
-                "\n5. Number of Contacts By City \n6. Number of Contacts By State")
+                "\n5. Number of Contacts By City \n6. Number of Contacts By State \n7. None")
 let input = prompt("Enter your choice:  ")
 input = parseInt(input)
 let searchedContacts;
@@ -242,4 +242,13 @@ switch (input){
         searchedContacts = searchByCityState("", "", stateNum, 6)
         console.log("Contacts Found in " + stateNum +" are:  " + searchedContacts.reduce(count,0))
         break
+}
+
+// UC11: Sort the contacts alphabetically
+console.log("Do You Want to Sort the Contacts:  \n1. YES \n2. NO")
+let inputSort = parseInt(prompt("Enter your choice:  "))
+if(inputSort == 1){
+    addressBookArray.sort();
+    for(let i = 0; i < addressBookArray.length; i++)
+        console.log(addressBookArray[i].toString())
 }
