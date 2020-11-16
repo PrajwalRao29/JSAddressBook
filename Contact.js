@@ -90,14 +90,17 @@ addressBookArray.push(contact2)
 addressBookArray.push(contact3)    
 
 // UC4: Find Contact by Name And Edit It.
-const prompt = require('prompt-sync')();
 function findContact(fname, lname){
     let contactToEdit;
     for(let i = 0; i < addressBookArray.length; i++){
         if(addressBookArray[i].firstName === fname && addressBookArray[i].lastName === lname)
             contactToEdit = addressBookArray[i]
     }
-
+    return contactToEdit;
+}
+const prompt = require('prompt-sync')();
+function findContactAndEdit(fname, lname){
+    let contactToEdit = findContact(fname,lname)
     if(contactToEdit == null)
         console.log("No Contact Found To Edit")
     else{
@@ -149,6 +152,17 @@ function findContact(fname, lname){
     }
 }
 
-let param1 = prompt("Enter the First Name:  ")
-let param2 = prompt("Enter the Last Name:  ")
-findContact(param1, param2)
+let param1 = prompt("Enter the First Name (contact to edit):  ")
+let param2 = prompt("Enter the Last Name (contact to edit):  ")
+findContactAndEdit(param1, param2)
+
+// UC5: Delete A Contact
+function deleteContact(fname, lname){
+    let contactToDelete = findContact(fname. lname)
+    addressBookArray.pop(contactToDelete)
+}
+let contact4 = new Contact("Aditya", "Viren", "DLFF", "ABCD", "EFGH", "122 004", "91 4929280202", "aditya@gmail.com")
+addressBookArray.push(contact4)
+let param3 = prompt("Enter the First Name (contact to delete):  ")
+let param4 = prompt("Enter the Last Name (contact to delete):  ")
+deleteContact(param3, param4)
